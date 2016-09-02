@@ -1,17 +1,9 @@
 <?php
-
+error_reporting (E_ALL & ~ E_NOTICE & ~ E_DEPRECATED);
+$host = 'localhost';
 $usuario = 'root';
 $senha = '';
-$host = 'localhost';
-$banco = 'cursophp';
-
-$conexao = mysql_connect($host,$usuario,$senha) or die("Error Fatal");
-echo "Conexao realizada com sucesso!";
-
-
-
-
-
-
-
- ?>
+$db = 'cursophp';
+$conexao = mysql_connect($host,$usuario,$senha)or die('ERROR GERAL');
+echo "<center>\nConecçao Estabelecida com banco de dados</center>";
+?>
