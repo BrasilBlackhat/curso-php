@@ -1,3 +1,4 @@
+<?php require_once('./config/db.php'); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,14 +17,17 @@
     </div>
     <div class="tarefas">
       <ul>
-        <?php  ?>
+        <?php
+            $query = mysql_query("SELECT * FROM tarefas") or die(mysql_error());
+            while ($row = mysql_fetch_array($query, MYSQL_NUM)) {
+            ?>
         <li>
-          <span> Tarefa <?php ?></span>
-          <a href="#"class="butao btn-sucess">Editar</a>
+          <span><?= $row['tarefa']; ?></span>
+          <a href="editar.php"class="butao btn-sucess">Editar</a>
           <a href="#"class="butao btn-excluir">Remover</a>
         </li>
       </ul>
-     <?php  ?>
+      <?php    }    ?>
     </div>
   </body>
 </html>
