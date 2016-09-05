@@ -9,5 +9,5 @@ $updated = date("Y-m-d H:i:s");
 
 $insert = mysql_query("INSERT INTO tarefas(tarefa,created_at,updated_at)VALUES('$tarefa', '$created', '$updated')") or die(mysql_error());
 
-echo "Dados inseridos com sucesso!";
+header("Location: index.php");
 ?>

@@ -15,19 +15,20 @@
       <input type="submit" value="Enviar">
       </form>
     </div>
-    <div class="tarefas">
-      <ul>
-        <?php
-            $query = mysql_query("SELECT * FROM tarefas") or die(mysql_error());
-            while ($row = mysql_fetch_array($query, MYSQL_NUM)) {
-            ?>
-        <li>
-          <span><?= $row['tarefa']; ?></span>
-          <a href="editar.php"class="butao btn-sucess">Editar</a>
-          <a href="#"class="butao btn-excluir">Remover</a>
-        </li>
-      </ul>
-      <?php    }    ?>
-    </div>
+      <div class="tarefas">
+        <ul>
+          <?php
+              $query = mysql_query("SELECT * FROM tarefas") or die(mysql_error());
+              while ($row = mysql_fetch_array($query, MYSQL_NUM)) {
+          ?>
+          <li>
+            <span><?= $row[1]; ?></span>
+            <a href="editar.php?id=<?= $row[0] ?>"class="butao btn-sucess">Editar</a>
+            <a href="excluir.php?id=<?= $row[0] ?>"class="butao btn-excluir">Remover</a>
+          </li>
+        <?php }  ?>
+        </ul>
+
+      </div>
   </body>
 </html>
