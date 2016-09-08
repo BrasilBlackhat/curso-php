@@ -1,26 +1,30 @@
-//codado por Lucas Oliveira!
 <?php
 require_once('./config/db.php');
 $id = $_GET['id'];
 $query = mysql_query("SELECT * FROM tarefas WHERE id = $id") or die(mysql_error());
 $result = mysql_fetch_array($query);
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<?php include_once('include-header.php'); ?>
+<!-- Adicionando Painel -->
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h1>Editar Tarefa: <?= $result['tarefa'] ?></h1>
+  </div>
+</div>
     <title>Tarefa: <?= $result['tarefa'] ?></title>
     <link rel="stylesheet" href="./css/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <h1>Tarefa: <?= $result['tarefa'] ?></h1>
-    <div class="formulario">
-      <form class="formTarega" action="updateTarefa.php" method="post">
-        <label for="tarefa">Tarefa</label>
+    <form class="formTarega" action="updateTarefa.php" method="post">
+      <div class="form-group">
+        <label for="tarefa"class="col-sm-3 control-label">Tarefa </label>
         <input type="hidden" name="id" value="<?= $result['id'] ?>">
-        <input type="text" id="tarefa" name="tarefa" value="<?= $result['tarefa'] ?>">
-        <input type="submit" value="Enviar">
-      </form>
-    </div>
-  </body>
-</html>
+      </div>
+      <div class="form-group col-sm-6">
+        <input type="text" id="tarefa" name="tarefa" value="<?= $result['tarefa'] ?>"class="form-control">
+      </div>
+      <div class="">
+        <input type="submit" value="Enviar"class="col-sm-3 btn btn-sucess">
+      </div>
+    </form>
+<?php include_once('include-footer.php'); ?>
